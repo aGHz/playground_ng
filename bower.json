@@ -1,0 +1,20 @@
+{
+  "name": "playground_ng",
+  "version": "0.0.0",
+  "homepage": "https://github.com/aGHz/playground_ng",
+  "authors": [
+    "Adrian Ghizaru <adrian.ghizaru@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.16"
+  }
+}
