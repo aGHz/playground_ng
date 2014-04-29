@@ -1,0 +1,25 @@
+@list-bg: #CDE9FC;
+@list-fg: #2357DD;
+
+ul {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+        margin: 5px;
+        padding: 5px;
+        background-color: @list-bg;
+        cursor: default;
+
+        span {
+            color: @list-fg;
+
+            &:first-child {
+                font-weight: bold;
+            }
+        }
+    }
+}
+
