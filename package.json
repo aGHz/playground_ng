@@ -17,6 +17,6 @@
   },
   "scripts": {
     "postinstall": "bower install",
-    "start": "http-server ./static -p 8001"
+    "start": "http-server ./build -p 8001"
   }
 }
