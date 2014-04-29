@@ -5,12 +5,19 @@ var gulp = require('gulp'),
 
 gulp.task('cs', function() {
     return gulp.src('./src/**/*.coffee')
-        .pipe(coffee().on('error', gutil.log))
+        .pipe(coffee({bare: true, map: true}).on('error', gutil.log))
         .pipe(gulp.dest('./static'))
         .pipe(notify({ message: 'Compiled <%= file.relative %>' }))
         ;
 });
 
+gulp.task('html', function() {
+    return gulp.src('./src/**/*.html')
+        .pipe(gulp.dest('./static'))
+        .pipe(notify({ message: 'Copied <%= file.relative %>' }))
+        ;
+});
+
 gulp.task('default', [], function() {
-    gulp.start('cs');
+    gulp.start('cs', 'html');
 });
