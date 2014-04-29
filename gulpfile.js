@@ -3,9 +3,16 @@ var gulp = require('gulp'),
     notify = require('gulp-notify'),
     gutil = require('gulp-util');
 
-gulp.task('cs', function() {
+gulp.task('cs-copy', function() {
     return gulp.src('./src/**/*.coffee')
-        .pipe(coffee({bare: true, map: true}).on('error', gutil.log))
+        .pipe(gulp.dest('./static'))
+        .pipe(notify({ message: 'Copied <%= file.relative %>' }))
+        ;
+});
+
+gulp.task('cs', ['cs-copy'], function() {
+    return gulp.src('./src/**/*.coffee')
+        .pipe(coffee({bare: true, sourceMap: true}).on('error', gutil.log))
         .pipe(gulp.dest('./static'))
         .pipe(notify({ message: 'Compiled <%= file.relative %>' }))
         ;
