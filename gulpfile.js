@@ -2,7 +2,8 @@ var gulp = require('gulp'),
     coffee = require('gulp-coffee'),
     less = require('gulp-less'),
     notify = require('gulp-notify'),
-    gutil = require('gulp-util');
+    gutil = require('gulp-util'),
+    shell = require('gulp-shell');
 
 var paths = {
     bower: ['./bower_components/**/*', '!./bower_components/**/.*', '!./bower_components/**/bower.json'],
@@ -14,7 +15,12 @@ var paths = {
         base: './build',
         bower: './build/bower',
         css: './build/style',
-        js: './build/js'
+        js: './build/js',
+        vendor: './build/vendor'
+    },
+
+    vendor: {
+        bootstrap: './vendor/bootstrap/dist/**'
     }
 };
 
@@ -57,4 +63,16 @@ gulp.task('bower', function() {
 
 gulp.task('default', [], function() {
     gulp.start('bower', 'cs', 'less', 'html');
+});
+
+
+gulp.task('bootstrap-make', shell.task(
+    ['grunt dist'],
+    {cwd: './vendor/bootstrap'}
+));
+
+gulp.task('bootstrap', ['bootstrap-make'], function() {
+    return gulp.src(paths.vendor.bootstrap)
+        .pipe(gulp.dest(paths.build.vendor + '/bootstrap'))
+        ;
 });
