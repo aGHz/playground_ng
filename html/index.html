@@ -2,14 +2,16 @@
 <html ng-app="playgroundApp">
   <head>
     <script src="bower/angular/angular.js"></script>
+    <script src="bower/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="js/playground-app.js"></script>
-    <link href="style/style.css" rel="stylesheet"/>
     <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+    <link href="style/style.css" rel="stylesheet"/>
   </head>
   <body ng-controller="mainCtrl">
+
+<!--
     <nav class="navbar navbar-default" role="navigation">
       <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
             <span class="sr-only">Toggle navigation</span>
@@ -20,7 +22,6 @@
           <a class="navbar-brand" href="#">Example</a>
         </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Foo</a></li>
@@ -55,14 +56,22 @@
               </ul>
             </li>
           </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
+        </div>
+      </div>
     </nav>
+-->
 
+    <div class="bar_container">
+      <progressbar ng-repeat="bar in bars" max="bar.max" value="bar.value" type="{{ bar.type }}">
+      </progressbar>
+    </div>
+
+<!--
     <ul class="test">
       <li ng-repeat="thing in things">
         <span>{{ thing.name }}</span>: <span>{{ thing.thing }}</span>
       </li>
     </ul>
+-->
   </body>
 </html>
